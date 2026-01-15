@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* Semantic Variables - Values controlled by data-theme */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-highlight: var(--highlight);
+  
+  --color-bg-base: var(--bg-base);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+
+  --animate-fade-in: fadeIn 1s ease-out;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-pulse-glow: pulseGlow 5s ease-in-out infinite;
+}
+
+:root {
+  /* Default / Golden Hour Theme */
+  --primary: #B25F56;      /* Terracotta */
+  --secondary: #F9AF72;    /* Peach */
+  --accent: #6494E8;       /* Sky */
+  --highlight: #ECBB51;    /* Gold */
+  
+  --bg-base: #FFF9F2;      /* Warm White */
+  --text-main: #4A3B32;    /* Warm Deep Brown */
+  --text-muted: rgba(74, 59, 50, 0.6);
+}
+
+[data-theme='tropical'] {
+  /* Tropical / Bird of Paradise Theme */
+  --primary: #F77251;      /* Red-Orange */
+  --secondary: #4BC8B6;    /* Teal/Green */
+  --accent: #03BFEF;       /* Cyan Blue */
+  --highlight: #FDBA2E;    /* Golden Yellow */
+  
+  --bg-base: #F0FAFA;      /* Cool/Fresh White */
+  --text-main: #0F3F3C;    /* Deep Jungle Green */
+  --text-muted: rgba(15, 63, 60, 0.6);
+}
+
+[data-theme='nature'] {
+  /* Nature / Wood & Sky Theme */
+  --primary: #8D6E63;      /* Wood Brown */
+  --secondary: #66BB6A;    /* Fresh Grass Green */
+  --accent: #29B6F6;       /* Sky Blue */
+  --highlight: #FFF176;    /* Soft Sun/Cloud */
+  
+  --bg-base: #E3F2FD;      /* Pale Sky Blue */
+  --text-main: #3E2723;    /* Deep Bark Brown */
+  --text-muted: rgba(62, 39, 35, 0.6);
+}
+
+[data-theme='noir'] {
+  /* Noir / Dark Art Gallery Theme */
+  --primary: #E8D5B7;      /* Antique Gold / Champagne */
+  --secondary: #A78BFA;    /* Soft Violet */
+  --accent: #F472B6;       /* Rose Pink */
+  --highlight: #FBBF24;    /* Gallery Gold */
+  
+  --bg-base: #0F0F0F;      /* Near Black */
+  --text-main: #F5F5F5;    /* Off White */
+  --text-muted: rgba(245, 245, 245, 0.5);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/* Transitions for all colored elements */
+*, *::before, *::after {
+  transition-property: color, background-color, border-color, stroke, fill;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+/* Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-primary);
+}
+
+/* Utility Classes utilizing Variables */
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-accent { color: var(--color-accent); }
+.text-highlight { color: var(--color-highlight); }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.05); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.7; filter: blur(50px); transform: scale(1); }
+  50% { opacity: 0.9; filter: blur(60px); transform: scale(1.1); }
+}
