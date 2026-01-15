@@ -1,6 +1,6 @@
 # ArtSide Gallery | SharkLian Studio
 
-![ArtSide Banner](public/gallery/artwork-1.png)
+![ArtSide Banner](public/project-preview.png)
 
 > **Where Algorithms Dream in Color.**  
 > An immersive digital art gallery exploring the intersection of human curation and AI generation.

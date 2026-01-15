@@ -111,3 +111,12 @@ h1, h2, h3, h4, h5, h6 {
   0%, 100% { opacity: 0.7; filter: blur(50px); transform: scale(1); }
   50% { opacity: 0.9; filter: blur(60px); transform: scale(1.1); }
 }
+
+/* Scrollbar Hide Utilities */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}

@@ -46,22 +46,22 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose })
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="relative z-10 w-full max-w-6xl max-h-[90vh] overflow-visible flex flex-col md:flex-row items-center"
+            className="relative z-10 w-full max-w-6xl max-h-[90vh] overflow-y-auto md:overflow-visible flex flex-col md:flex-row items-center scrollbar-hide"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
+            {/* Close Button - Sticky on mobile to ensure accessibility */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors duration-300"
+              className="fixed top-24 right-4 md:absolute md:top-4 md:right-4 z-100 w-12 h-12 md:w-10 md:h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors duration-300 backdrop-blur-sm"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
               </svg>
             </button>
 
-            {/* Image Section - Larger and positioned higher */}
+            {/* Image Section */}
             <motion.div 
-              className="relative  min-h-[350px] md:min-h-[500px] self-start rounded-xl overflow-hidden shadow-2xl w-[1200px]"
+              className="relative w-full h-[50vh] md:h-auto md:min-h-[500px] md:w-[65%] self-start rounded-xl overflow-hidden shadow-2xl shrink-0 bg-black/5"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -69,13 +69,13 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose })
               <img
                 src={artwork.image}
                 alt={artwork.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-cover"
               />
             </motion.div>
 
-            {/* Info Section - Smaller and positioned lower */}
+            {/* Info Section */}
             <motion.div 
-              className="w-full md:w-[40%] p-8 md:p-10 flex flex-col justify-center bg-bg-base/80 backdrop-blur-xl self-end rounded-xl shadow-2xl md:-ml-8 md:mt-16"
+              className="w-full md:w-[45%] p-6 md:p-10 flex flex-col justify-center bg-bg-base/90 md:bg-bg-base/80 backdrop-blur-xl md:self-end rounded-xl shadow-2xl md:-ml-12 md:mt-16 z-20"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
@@ -92,7 +92,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose })
 
               {/* Title */}
               <motion.h2 
-                className="font-serif text-3xl md:text-4xl font-medium text-primary mb-2"
+                className="font-serif text-2xl md:text-4xl font-medium text-primary mb-2"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55 }}
@@ -102,7 +102,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose })
 
               {/* Artist & Year */}
               <motion.div 
-                className="flex items-center gap-4 text-sm text-text-muted mb-6"
+                className="flex items-center gap-4 text-xs md:text-sm text-text-muted mb-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
@@ -124,7 +124,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose })
 
               {/* Description */}
               <motion.p 
-                className="text-text-main leading-relaxed text-base"
+                className="text-text-main leading-relaxed text-sm md:text-base"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
