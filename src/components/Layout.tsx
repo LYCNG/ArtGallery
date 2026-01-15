@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import { useTheme } from '../context/ThemeContext';
+// import { useTheme } from '../context/ThemeContext';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden text-text-main font-sans selection:bg-highlight selection:text-white">
       {/* Cinematic Grain Overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.4] z-[100] mix-blend-overlay" 
+      <div className="fixed inset-0 pointer-events-none opacity-[0.4] z-100 mix-blend-overlay" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
       </div>
 
@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-bg-base transition-colors duration-700">
         
         {/* Helper gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/20 via-secondary/10 to-highlight/10 transition-colors duration-700" />
+        <div className="absolute inset-0 bg-linear-to-b from-accent/20 via-secondary/10 to-highlight/10 transition-colors duration-700" />
 
         {/* Dynamic Orbs - Colors mapped to semantic variables */}
         
@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="absolute top-[10%] left-[30%] w-[400px] h-[400px] bg-accent rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-float transition-colors duration-700" style={{ animationDelay: '2s' }} />
       
         {/* Light Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-bg-base/50 to-white/40 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-linear-to-tr from-transparent via-bg-base/50 to-white/40 mix-blend-overlay" />
       </div>
 
       <Navbar />
