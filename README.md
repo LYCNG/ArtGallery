@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# ArtSide Gallery | SharkLian Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![ArtSide Banner](public/gallery/artwork-1.png)
 
-Currently, two official plugins are available:
+> **Where Algorithms Dream in Color.**  
+> An immersive digital art gallery exploring the intersection of human curation and AI generation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎨 Overview
 
-## React Compiler
+**ArtSide Gallery** is a conceptual digital art exhibition platform designed to showcase the power of modern frontend technologies and generative AI. This project serves as an interactive portfolio piece, demonstrating high-performance React architecture, semantic design systems, and fluid animations.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Every artwork displayed in this gallery was co-created with Artificial Intelligence, blurring the lines between algorithmic precision and human creativity.
 
-## Expanding the ESLint configuration
+🔗 **Live Demo**: [SharkLian Portfolio](https://sharklian-portfolio.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Key Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Immersive Visual Experience**: Cinematic grain overlays, dynamic lighting effects, and smooth scroll interactions using `Framer Motion`.
+- **Semantic Theme System**: seamlessly switch between **Golden Hour**, **Tropical**, **Nature**, and **Noir** themes, with all UI components adapting in real-time via CSS variables.
+- **Interactive Lightbox**: A custom-built modal experience for viewing high-resolution artwork details with deeply integrated animations.
+- **Responsive Masonry Grid**: A fully responsive gallery layout that adapts gracefully from mobile screens to large desktop displays.
+- **AI Integration Concept**: A dedicated "About Project" section explaining the "Human x AI" collaboration philosophy.
+- **SEO Optimized**: Fully configured with Open Graph tags and semantic HTML for optimal search engine visibility and social sharing.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+This project is built with a modern, performance-focused stack:
+
+- **Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **State Management**: React Context API
+- **Version Control**: Git & GitHub
+
+## 🚀 Getting Started
+
+Clone the repository and run the development server locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/LYCNG/ArtGallery.git
+
+# Navigate to the project directory
+cd ArtGallery
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📂 Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+src/
+├── components/        # Reusable UI components (ArtworkCard, Modal, Navbar, etc.)
+├── context/           # Global state management (ThemeContext)
+├── data/              # Mock data and TypeScript interfaces
+├── hooks/             # Custom hooks
+└── assets/            # Static assets
 ```
+
+## 👨‍💻 Author
+
+**SharkLian Studio**  
+_Creative Frontend Development_
+
+- Portfolio: [sharklian-portfolio.vercel.app](https://sharklian-portfolio.vercel.app/zh-TW)
+- GitHub: [@LYCNG](https://github.com/LYCNG)
+
+---
+
+&copy; 2026 SharkLian Studio. All rights reserved.
