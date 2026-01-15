@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import  { Suspense } from 'react';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
 import GalleryGrid from './components/GalleryGrid';
