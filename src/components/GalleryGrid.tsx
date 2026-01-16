@@ -57,6 +57,18 @@ const GalleryGrid: React.FC = () => {
         artwork={selectedArtwork}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
+        onNext={() => {
+          if (!selectedArtwork) return;
+          const currentIndex = artworks.findIndex(a => a.id === selectedArtwork.id);
+          const nextIndex = (currentIndex + 1) % artworks.length;
+          setSelectedArtwork(artworks[nextIndex]);
+        }}
+        onPrev={() => {
+          if (!selectedArtwork) return;
+          const currentIndex = artworks.findIndex(a => a.id === selectedArtwork.id);
+          const prevIndex = (currentIndex - 1 + artworks.length) % artworks.length;
+          setSelectedArtwork(artworks[prevIndex]);
+        }}
       />
     </>
   );

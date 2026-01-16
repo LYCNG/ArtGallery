@@ -11,15 +11,17 @@ interface ArtworkCardProps {
 const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, index, onClick }) => {
   return (
     <motion.div
+      layoutId={`card-${artwork.id}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="group relative w-full aspect-3/4 cursor-pointer overflow-hidden rounded-lg shadow-sm hover:shadow-xl transition-all duration-500 bg-bg-base"
+      className="group relative w-full aspect-3/4 cursor-pointer  rounded-lg shadow-sm hover:shadow-xl transition-all duration-500 bg-bg-base"
       onClick={onClick}
     >
       {/* Background / Artwork Image */}
-      <img 
+      <motion.img 
+        layoutId={`image-${artwork.id}`}
         src={artwork.image}
         alt={artwork.title}
         className="absolute inset-0 w-full h-full object-cover "
@@ -30,9 +32,8 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, index, onClick }) =>
       <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 mix-blend-overlay" />
 
       {/* Content */}
-      {/* Content */}
       <div className="absolute inset-0 p-6 flex flex-col justify-end">
-        <div 
+        <motion.div 
           className="translate-y-8 group-hover:translate-y-0 transition-all ease-out bg-bg-base/90 backdrop-blur-md p-5 rounded-md shadow-sm border border-primary/20"
           style={{ transition: '0.3s ease-out' }}
         >
@@ -61,7 +62,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, index, onClick }) =>
             </div>
             <span className="text-sm text-text-muted mb-0.5">{artwork.year}</span>
           </div>
-        </div>
+        </motion.div>
       </div>
       
     </motion.div>
