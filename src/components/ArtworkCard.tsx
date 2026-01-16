@@ -24,6 +24,8 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, index, onClick }) =>
         layoutId={`image-${artwork.id}`}
         src={artwork.image}
         alt={artwork.title}
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover "
         style={{ transition: 'transform 0.7s linear' }}
       />

@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
 
   return (
     <motion.header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${isScrolled ? 'py-4 bg-bg-base/60' : 'py-8'}`}
+      className={`fixed top-0 left-0 w-full z-30 transition-all duration-700 ${isScrolled ? 'py-4 bg-bg-base/60' : 'py-8'}`}
       style={{ backdropFilter: headerBackdrop }}
     >
       <div className="px-6 md:px-12 max-w-[1600px] mx-auto flex items-center justify-between">
@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
           <h1 className="font-serif text-2xl md:text-3xl font-bold tracking-[0.2em] text-primary group-hover:text-highlight transition-colors duration-500">
             ARTSIDE
           </h1>
-          <div className="absolute -bottom-2 left-0 w-0 h-[1px] bg-highlight group-hover:w-full transition-all duration-500" />
+          <div className="absolute -bottom-2 left-0 w-0 h-px bg-highlight group-hover:w-full transition-all duration-500" />
         </div>
 
         {/* Navigation */}
@@ -75,8 +75,8 @@ const Navbar: React.FC = () => {
             
             {/* Mobile Menu Toggle */}
             <div className="md:hidden text-primary cursor-pointer">
-                <div className="w-8 h-[1px] bg-primary mb-2" />
-                <div className="w-6 h-[1px] bg-primary ml-auto" />
+                <div className="w-8 h-px bg-primary mb-2" />
+                <div className="w-6 h-px bg-primary ml-auto" />
             </div>
         </div>
       </div>

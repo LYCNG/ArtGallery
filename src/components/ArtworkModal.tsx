@@ -41,24 +41,24 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose, o
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-8"
           onClick={onClose}
         >
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-md" />
 
           {/* Navigation Arrows (Desktop) */}
           {!isMobile && (
             <>
               <button
                 onClick={(e) => { e.stopPropagation(); onPrev?.(); }}
-                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300"
+                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); onNext?.(); }}
-                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300"
+                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </button>
@@ -66,27 +66,31 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose, o
           )}
 
           {isMobile ? (
-            // Mobile Layout (Vertical Stack)
+            // Mobile Layout (Vertical Stack, Full Screen)
             <motion.div
               layoutId={`card-${artwork.id}`}
-              className="relative z-10 w-full max-h-[90vh] overflow-y-auto scrollbar-hide bg-bg-base/90 backdrop-blur-xl rounded-xl shadow-2xl flex flex-col"
+              className="relative z-10 w-full h-dvh overflow-y-auto scrollbar-hide bg-bg-base/95 backdrop-blur-xl shadow-none flex flex-col"
               onClick={(e) => e.stopPropagation()}
-              style={{ borderRadius: '0.75rem' }}
+              style={{ borderRadius: '0px' }}
             >
-              {/* Close Button (Fixed sticky) */}
+              {/* Close Button (Fixed - adjusted for safe area if needed, using top-4) */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 z-[100] w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors duration-300 backdrop-blur-sm"
+                className="fixed top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors duration-300 backdrop-blur-sm"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
               </button>
 
               {/* Image Section */}
-              <motion.div className="relative w-full h-[50vh] shrink-0 bg-black/5">
+              <motion.div className="relative w-full h-[50dvh] shrink-0 bg-black/5">
                 <motion.img
                   layoutId={`image-${artwork.id}`}
                   src={artwork.image}
                   alt={artwork.title}
+                  loading="eager"
+                  // @ts-ignore
+                  fetchPriority="high"
+                  decoding="sync"
                   className="w-full h-full object-contain"
                 />
                  {/* Mobile Navigation Overlay on Image */}
@@ -108,7 +112,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose, o
 
               {/* Info Section */}
               <motion.div 
-                className="relative z-20 -mt-12 p-6 flex flex-col justify-center pb-12 bg-bg-base/90 backdrop-blur-xl rounded-t-3xl shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]"
+                className="relative z-20 -mt-8 flex-1 p-6 flex flex-col pt-10 pb-20 bg-bg-base rounded-t-3xl shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -121,7 +125,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose, o
                     <span>{artwork.year}</span>
                  </motion.div>
                  <motion.div className="w-12 h-px bg-primary/30 mb-6" />
-                 <motion.p className="text-text-main leading-relaxed text-sm">{artwork.description}</motion.p>
+                 <motion.p className="text-text-main leading-relaxed text-sm flex-1">{artwork.description}</motion.p>
                  <motion.div className="w-full h-px bg-primary/20 mt-8 mb-6" />
                  {/* Social Icons */}
                  <motion.div className="flex items-center gap-6 text-primary self-center">
@@ -143,7 +147,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose, o
                {/* Close Button */}
                <button
                 onClick={onClose}
-                className="absolute -top-12 right-0 z-50 p-2 text-white/50 hover:text-white transition-colors"
+                className="absolute -top-12 right-0 z-40 p-2 text-white/50 hover:text-white transition-colors"
                >
                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                  <span className="sr-only">Close</span>
@@ -157,6 +161,10 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose, o
                   layoutId={`image-${artwork.id}`}
                   src={artwork.image}
                   alt={artwork.title}
+                   loading="eager"
+                   // @ts-ignore
+                   fetchPriority="high"
+                   decoding="sync"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
