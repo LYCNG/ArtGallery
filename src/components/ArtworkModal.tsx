@@ -73,14 +73,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose, o
               onClick={(e) => e.stopPropagation()}
               style={{ borderRadius: '0px' }}
             >
-              {/* Close Button (Fixed - adjusted for safe area if needed, using top-4) */}
-              <button
-                onClick={onClose}
-                className="fixed top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors duration-300 backdrop-blur-sm"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-              </button>
-
+           
               {/* Image Section */}
               <motion.div className="relative w-full h-[50dvh] shrink-0 bg-black/5">
                 <motion.img
@@ -117,6 +110,14 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({ artwork, isOpen, onClose, o
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
+                   {/* Close Button (Fixed - adjusted for safe area if needed, using top-4) */}
+              <button
+                onClick={onClose}
+                className="absolute top-4 right-4 z-50 w-8 h-8 rounded-full  text-gray-400 hover:text-gray-600 flex items-center justify-center  transition-colors duration-300 backdrop-blur-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+
                  <motion.span className="inline-block text-[10px] tracking-[0.2em] uppercase text-accent font-bold mb-3">{artwork.type}</motion.span>
                  <motion.h2 className="font-serif text-2xl font-medium text-primary mb-2">{artwork.title}</motion.h2>
                  <motion.div className="flex items-center gap-4 text-xs text-text-muted mb-6">
